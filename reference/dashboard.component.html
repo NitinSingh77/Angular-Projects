@@ -1,0 +1,49 @@
+<div class="appointment-containerm mt-5" style="margin-left: 100px; margin-right: 100px;">
+    <div class="card">
+        <div class="card-header">
+            Book Appointment
+        </div>
+        <form (ngSubmit)="book()" #appointmentform="ngForm">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Enter name:</label>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="name" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Enter contact:</label>
+                    <input type="text" class="form-control" name="contact" [(ngModel)]="contact" required />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Enter address:</label>
+                    <input type="text" class="form-control" name="addressLine1"  [(ngModel)]="addressLine1"  required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Enter city:</label>
+                    <input type="text" class="form-control" name="city" [(ngModel)]="city"  required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Choose Doctor:</label>
+                    <select class="mt-3" name="doctor" [(ngModel)]="doctor_id">
+                        <option *ngFor="let d of doctor" value="{{d.id}}">{{d.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Select Date:</label>
+                    <input type="date" class="form-control" name="date" placeholder="eg. 2024-12-11" [(ngModel)]="date" required />
+                </div>
+            </div>
+
+        </div>
+       </form>
+        <div class="card-footer">
+            <button class="btn btn-primary" (click)="book()" [disabled]="!appointmentform.valid">Book</button>
+        </div>
+    </div>
+</div>
+
